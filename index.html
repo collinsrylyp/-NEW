@@ -80,11 +80,13 @@
     </div>
     <canvas id="fireworks"></canvas>
 
-    <!-- 添加音频元素 -->
-    <audio id="fireworkSound" controls>
-        <source src="https://<collinsrylyp>.github.io/<index.html>/firework.mp3" type="audio/mpeg">
-    </audio>
-
+  <!-- 添加音频元素 -->
+    <audio controls>
+    <source src="https://<collinsrylyp>.github.io/<index.html>/firework.mp3" type="audio/mpeg">
+</audio>
+preload="auto"
+fireworkSound.currentTime = 0
+    
     <script>
         // 名字入场动画
         window.onload = function() {

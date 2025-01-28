@@ -2,9 +2,8 @@
 <html>
 <head>
     <title>给唐佩琪的新年烟花</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 添加 viewport 标签 -->
     <style>
-        body {
+      body {
             margin: 0;
             overflow: hidden;
             background: #000;
@@ -29,7 +28,7 @@
         @keyframes float {
             0% { transform: translateY(20px); opacity: 0; }
             50% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-20px); opacity: 0.8; }
+ 100% { transform: translateY(-20px); opacity: 0.8; }
         }
 
         #greeting {
@@ -53,23 +52,6 @@
             position: absolute;
             z-index: 1;
         }
-
-        /* 响应式设计：针对手机屏幕调整样式 */
-        @media (max-width: 768px) {
-            #name {
-                font-size: 2.5em; /* 手机上的字体大小 */
-                top: 15%; /* 调整位置 */
-            }
-
-            #greeting {
-                font-size: 1.5em; /* 手机上的字体大小 */
-                top: 70%; /* 调整位置 */
-            }
-
-            #greeting span {
-                font-size: 0.8em; /* 调整小字大小 */
-            }
-        }
     </style>
 </head>
 <body>
@@ -80,13 +62,13 @@
     </div>
     <canvas id="fireworks"></canvas>
 
-  <!-- 添加音频元素 -->
+    <!-- 添加音频元素 -->
     <audio controls>
     <source src="https://<collinsrylyp>.github.io/<index.html>/firework.mp3" type="audio/mpeg">
 </audio>
 preload="auto"
 fireworkSound.currentTime = 0
-    
+
     <script>
         // 名字入场动画
         window.onload = function() {

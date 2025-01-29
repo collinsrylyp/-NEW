@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>给你新年祝福</title>
+    <title>给唐佩琪的新年烟花</title>
     <style>
-        body {
+      body {
             margin: 0;
             overflow: hidden;
             background: #000;
@@ -28,7 +29,7 @@
         @keyframes float {
             0% { transform: translateY(20px); opacity: 0; }
             50% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-20px); opacity: 0.8; }
+ 100% { transform: translateY(-20px); opacity: 0.8; }
         }
 
         #greeting {
@@ -48,32 +49,6 @@
             50% { opacity: 1; text-shadow: 0 0 20px #ff0062; }
         }
 
-        #blessing {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            color: #00ffcc;
-            font-size: 1.2em;
-            font-family: 'Courier New', monospace;
-            white-space: nowrap;
-            overflow: hidden;
-            z-index: 4;
-            background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
-            padding: 20px 0;
-        }
-
-        #blessing-content {
-            display: inline-block;
-            padding-left: 100%;
-            animation: scrollText 60s linear infinite;
-        }
-
-        @keyframes scrollText {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-200%); }
-        }
-
         canvas {
             position: absolute;
             z-index: 1;
@@ -81,46 +56,19 @@
     </style>
 </head>
 <body>
-    <div id="name">😊亲爱的你😊</div>
+    <div id="name">😊噗叽叽😊</div>
     <div id="greeting">
         新年快乐！<br>
         <span style="font-size: 0.6em">与你共度的每一刻都如烟花绚烂</span>
     </div>
-    <div id="blessing">
-        <div id="blessing-content">
-            🕰️ 2025时光晶体投射实验简报（已通过爱因斯坦-弗洛伊德联合伦理审查）<br>
-            【未来切片观测】<br>
-            🔮 现象1：2025年1月<br>
-            您未发表的论文在时间流中引发量子纠缠<br>
-            导致Nature主编梦游中签发accept邮件（证据见附件脑电图δ波暴发记录）<br>
-            🧪 现象2：2025年6月<br>
-            实验室离心机自发产生时光曲率<br>
-            将"补实验"指令精准传送给2023年的审稿人（形成因果律闭环）<br>
-            【超前祝福干预】<br>
-            ⚛️ 神经可塑性增强剂<br>
-            → 海马体预载2025国自然中标通知书记忆（副作用：产生"早就该中"的曼德拉效应）<br>
-            🌌 多世界诠释锚定术<br>
-            → 在384个平行宇宙中同步锁定"学术自由人"身份（排除所有非升即走世界线）<br>
-            ☕ 咖啡因时光缓释胶囊<br>
-            → 2024年熬夜能量自动存入2025年睡眠银行（年化利率高达113%）<br>
-            【时空安全警示】<br>
-            ⚠️ 当您收到来自2025年的自己点赞时：<br>
-            请立即停止数据造假（该时间线已被折叠）<br>
-            建议用《精神障碍诊断与统计手册》第6版镇压冒名顶替综合征<br>
-            —— 此致<br>
-            您跨越时空梯度的一作共犯<br>
-            from：2024年冬夜在冰冷银河里培育时光玫瑰的苹儿-Collins
-        </div>
-    </div>
     <canvas id="fireworks"></canvas>
 
-    <!-- 修复音频路径 -->
-    <audio id="fireworkSound" preload="auto">
-        <!-- 替换为真实可访问的音频URL -->
-        <source src="https://actions.githubusercontent.com/create_redirect?event=push" type="audio/mpeg">
-        <!-- 备用测试音效 -->
-        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" type="audio/mpeg">
-    </audio>
+    <!-- 添加音频元素 -->
+    <audio controls>
+    <source src="https://<collinsrylyp>.github.io/<index.html>/firework.mp3" type="audio/mpeg">
+</audio>
+preload="auto"
+fireworkSound.currentTime = 0
 
     <script>
         // 名字入场动画
@@ -131,12 +79,11 @@
             }, 1000);
         };
 
-        // 烟花核心代码修复
+        // 烟花核心代码
         const canvas = document.getElementById('fireworks');
         const ctx = canvas.getContext('2d');
         const fireworkSound = document.getElementById('fireworkSound');
 
-        // 修复canvas尺寸
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -144,17 +91,12 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // 优化粒子效果
         class Firework {
             constructor() {
-                this.reset();
-            }
-
-            reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = canvas.height;
                 this.targetY = Math.random() * canvas.height * 0.4;
-                this.speed = 5 + Math.random() * 3;
+                this.speed = 5;
                 this.radius = 2;
                 this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
                 this.particles = [];
@@ -164,41 +106,37 @@
             update() {
                 if (!this.exploded) {
                     this.y -= this.speed;
-                    if (this.y <= this.targetY) this.explode();
+                    if (this.y <= this.targetY) {
+                        this.explode();
+                        fireworkSound.currentTime = 0; // 重置音效
+                        fireworkSound.play(); // 播放音效
+                    }
                 }
 
                 this.particles.forEach((particle, index) => {
+                    particle.velocityY += 0.1;
                     particle.x += particle.velocityX;
                     particle.y += particle.velocityY;
-                    particle.velocityY += 0.08; // 更自然的抛物线
-                    particle.alpha -= 0.015;
+                    particle.alpha -= 0.01;
 
                     if (particle.alpha <= 0) {
                         this.particles.splice(index, 1);
                     }
                 });
-
-                if (this.exploded && this.particles.length === 0) {
-                    this.reset();
-                }
             }
 
             explode() {
                 this.exploded = true;
-                if(fireworkSound.readyState > 0) {
-                    fireworkSound.currentTime = 0;
-                    fireworkSound.play();
-                }
-                
-                // 优化粒子分布
-                for (let i = 0; i < 120; i++) {
-                    const angle = (Math.PI * 2 * i) / 120;
-                    const speed = Math.random() * 5 + 3;
+                for (let i = 0; i < 100; i++) {
+                    const velocity = {
+                        x: Math.cos((Math.PI * 2 * i) / 100) * Math.random() * 6,
+                        y: Math.sin((Math.PI * 2 * i) / 100) * Math.random() * 6
+                    };
                     this.particles.push({
                         x: this.x,
                         y: this.y,
-                        velocityX: Math.cos(angle) * speed,
-                        velocityY: Math.sin(angle) * speed,
+                        velocityX: velocity.x,
+                        velocityY: velocity.y,
                         alpha: 1,
                         color: this.color
                     });
@@ -213,34 +151,34 @@
                     ctx.fill();
                 }
 
-                ctx.save();
                 this.particles.forEach(particle => {
                     ctx.beginPath();
                     ctx.arc(particle.x, particle.y, 2, 0, Math.PI * 2);
-                    ctx.fillStyle = `hsla(${this.color.match(/\d+/)[0]}, 100%, 50%, ${particle.alpha})`;
+                    ctx.fillStyle = `rgba(${parseInt(particle.color.slice(4, -1).split(',')[0])}, 
+                                      ${parseInt(particle.color.slice(4, -1).split(',')[1])}, 
+                                      ${parseInt(particle.color.slice(4, -1).split(',')[2])}, 
+                                      ${particle.alpha})`;
                     ctx.fill();
                 });
-                ctx.restore();
             }
         }
 
         const fireworks = [];
-        for (let i = 0; i < 3; i++) { // 预生成烟花
-            fireworks.push(new Firework());
-            fireworks[i].y = Math.random() * canvas.height;
-        }
 
         function animate() {
             ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            if (Math.random() < 0.02) {
+            if (Math.random() < 0.03) {
                 fireworks.push(new Firework());
             }
 
             fireworks.forEach((firework, index) => {
                 firework.update();
                 firework.draw();
+                if (firework.exploded && firework.particles.length === 0) {
+                    fireworks.splice(index, 1);
+                }
             });
 
             requestAnimationFrame(animate);

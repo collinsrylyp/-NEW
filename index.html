@@ -3,7 +3,7 @@
 <head>
     <title>给你新年祝福</title>
     <style>
-      body {
+        body {
             margin: 0;
             overflow: hidden;
             background: #000;
@@ -28,7 +28,7 @@
         @keyframes float {
             0% { transform: translateY(20px); opacity: 0; }
             50% { transform: translateY(0); opacity: 1; }
- 100% { transform: translateY(-20px); opacity: 0.8; }
+            100% { transform: translateY(-20px); opacity: 0.8; }
         }
 
         #greeting {
@@ -48,14 +48,7 @@
             50% { opacity: 1; text-shadow: 0 0 20px #ff0062; }
         }
 
-        canvas {
-            position: absolute;
-            z-index: 1;
-        }
-    </style>
-</head>
-<body>
-            #blessing {
+        #blessing {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -81,10 +74,10 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* 调整原有元素层级 */
-        #name { z-index: 3; }
-        #greeting { z-index: 2; }
-        canvas { z-index: 1; }
+        canvas {
+            position: absolute;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -93,9 +86,6 @@
         新年快乐！<br>
         <span style="font-size: 0.6em">与你共度的每一刻都如烟花绚烂</span>
     </div>
-    <canvas id="fireworks"></canvas>
-
-    <!-- 新增时光祝福 -->
     <div id="blessing">
         <div id="blessing-content">
             🕰️ 2025时光晶体投射实验简报（已通过爱因斯坦-弗洛伊德联合伦理审查）<br>
@@ -121,14 +111,13 @@
             您跨越时空梯度的一作共犯<br>
             from：2024年冬夜在冰冷银河里培育时光玫瑰的苹儿-Collins
         </div>
-        <canvas id="fireworks"></canvas>
+    </div>
+    <canvas id="fireworks"></canvas>
 
     <!-- 添加音频元素 -->
-   <audio controls>
-    <source src="https://<collinsrylyp>.github.io/<index.html>/firework.mp3" type="audio/mpeg">
-</audio>
-preload="auto"
-fireworkSound.currentTime = 0
+    <audio id="fireworkSound" preload="auto">
+        <source src="https://<collinsrylyp>.github.io/<index.html>/firework.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         // 名字入场动画

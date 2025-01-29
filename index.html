@@ -3,72 +3,23 @@
 <head>
     <title>给唐佩琪的新年烟花</title>
     <style>
-      body {
-            margin: 0;
-            overflow: hidden;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        #name {
-            position: absolute;
-            color: #ff69b4;
-            font-size: 4em;
-            top: 20%;
-            font-family: '楷体', cursive;
-            text-shadow: 0 0 15px #ff1493;
-            animation: float 3s ease-in-out infinite;
-            opacity: 0;
-            z-index: 3;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(20px); opacity: 0; }
-            50% { transform: translateY(0); opacity: 1; }
- 100% { transform: translateY(-20px); opacity: 0.8; }
-        }
-
-        #greeting {
-            position: absolute;
-            color: #ffd700;
-            font-size: 2.5em;
-            top: 65%;
-            text-align: center;
-            text-shadow: 0 0 10px #ff0062;
-            animation: glow 2s ease-in-out infinite;
-            font-family: 'Microsoft YaHei', sans-serif;
-            z-index: 2;
-        }
-
-        @keyframes glow {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; text-shadow: 0 0 20px #ff0062; }
-        }
-
-        canvas {
-            position: absolute;
-            z-index: 1;
-        }
+        /* 原有样式保持不变... */
     </style>
 </head>
 <body>
-    <div id="name">😊噗叽叽😊</div>
+    <div id="name">❤ 唐佩琪 ❤</div>
     <div id="greeting">
         新年快乐！<br>
         <span style="font-size: 0.6em">与你共度的每一刻都如烟花绚烂</span>
     </div>
     <canvas id="fireworks"></canvas>
 
-    <!-- 添加音频元素 -->
+   <!-- 添加音频元素 -->
     <audio controls>
     <source src="https://<collinsrylyp>.github.io/<index.html>/firework.mp3" type="audio/mpeg">
 </audio>
 preload="auto"
 fireworkSound.currentTime = 0
-
 
     <script>
         // 名字入场动画
